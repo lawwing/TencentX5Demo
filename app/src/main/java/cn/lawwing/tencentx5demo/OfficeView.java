@@ -113,7 +113,7 @@ public class OfficeView extends FrameLayout implements TbsReaderView.ReaderCallb
 
     @Override
     public void onCallBackAction(Integer integer, Object o, Object o1) {
-        Log.e(TAG, "****************************************************" + integer);
+        Log.e(TAG, "***" + integer);
     }
 
     public void onStopDisplay() {
