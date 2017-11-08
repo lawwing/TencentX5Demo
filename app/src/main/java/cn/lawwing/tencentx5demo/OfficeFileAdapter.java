@@ -35,6 +35,7 @@ public class OfficeFileAdapter extends RecyclerView.Adapter<OfficeFileAdapter.Of
         final FileBean model = datas.get(position);
         if (model != null) {
             holder.fileName.setText(model.getFilename());
+            holder.filePath.setText("路径:" + model.getPath());
             holder.bossLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -53,11 +54,13 @@ public class OfficeFileAdapter extends RecyclerView.Adapter<OfficeFileAdapter.Of
 
     public class OfficeFileHolder extends RecyclerView.ViewHolder {
         TextView fileName;
+        TextView filePath;
         LinearLayout bossLayout;
 
         public OfficeFileHolder(View itemView) {
             super(itemView);
             fileName = (TextView) itemView.findViewById(R.id.fileName);
+            filePath = (TextView) itemView.findViewById(R.id.filePath);
             bossLayout = (LinearLayout) itemView.findViewById(R.id.bossLayout);
         }
     }

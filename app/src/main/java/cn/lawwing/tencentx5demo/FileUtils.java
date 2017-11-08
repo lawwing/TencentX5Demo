@@ -43,8 +43,9 @@ public class FileUtils {
             do {
                 //输出文件的完整路径
                 String data = cursor.getString(0);
+                String name = cursor.getString(1);
                 FileBean fileBean = new FileBean();
-                fileBean.setFilename(data);
+                fileBean.setFilename(name);
                 fileBean.setPath(data);
                 fileBeens.add(fileBean);
                 Log.d("tag", data);
