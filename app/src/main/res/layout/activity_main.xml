@@ -10,4 +10,18 @@
         android:id="@+id/mOfficeView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></cn.lawwing.tencentx5demo.OfficeView>
+
+    <TextView
+        android:id="@+id/pizhu"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="28dp"
+        android:layout_marginRight="28dp"
+        android:background="@drawable/round_btn_blue"
+        android:gravity="center"
+        android:text="批注"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
 </RelativeLayout>
