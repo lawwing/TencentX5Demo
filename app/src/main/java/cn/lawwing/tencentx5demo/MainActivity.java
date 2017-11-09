@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         mOfficeView = (OfficeView) findViewById(R.id.mOfficeView);
         pizhu = (TextView) findViewById(R.id.pizhu);
-        
         pizhu.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -88,7 +87,9 @@ public class MainActivity extends AppCompatActivity
      */
     private void initBitmap()
     {
+        pizhu.setVisibility(View.GONE);
         bmp = myShot(this);
+        pizhu.setVisibility(View.VISIBLE);
     }
     
     /**

@@ -4,7 +4,9 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="cn.lawwing.tencentx5demo.MainActivity">
+
 
     <cn.lawwing.tencentx5demo.OfficeView
         android:id="@+id/mOfficeView"

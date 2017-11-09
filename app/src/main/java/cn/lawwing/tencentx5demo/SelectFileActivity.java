@@ -7,14 +7,18 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
 public class SelectFileActivity extends AppCompatActivity
+        implements EasyPermissions.PermissionCallbacks
 {
     private RecyclerView recyclerView;
     
@@ -24,6 +28,8 @@ public class SelectFileActivity extends AppCompatActivity
     
     private ArrayList<FileBean> datas;
     
+    private TitleBarUtils titleBarUtils;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -31,6 +37,9 @@ public class SelectFileActivity extends AppCompatActivity
         setContentView(R.layout.activity_select_file);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         tipsText = (TextView) findViewById(R.id.tipsText);
+        
+        titleBarUtils = new TitleBarUtils(SelectFileActivity.this);
+        titleBarUtils.initTitle("文档列表");
         datas = new ArrayList<>();
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -86,4 +95,48 @@ public class SelectFileActivity extends AppCompatActivity
             }
         }.start();
     }
+    
+    @Override
+    public void onPermissionsGranted(int requestCode, List<String> perms)
+    {
+        // 成功
+        if (requestCode == 10086)
+        {
+            Log.e("test", perms.size() + "success size");
+            if (perms.size() == 2)
+            {
+                getLocalOffice();
+            }
+        }
+    }
+    
+    @Override
+    public void onPermissionsDenied(int requestCode, List<String> perms)
+    {
+        
+        // 失败
+        if (requestCode == 10086)
+        {
+            Log.e("test", perms.size() + "faild size");
+            Toast.makeText(SelectFileActivity.this,
+                    "请务必打开全部权限才能扫描文档",
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+    
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+            String[] permissions, int[] grantResults)
+    {
+        super.onRequestPermissionsResult(requestCode,
+                permissions,
+                grantResults);
+        
+        // Forward results to EasyPermissions
+        EasyPermissions.onRequestPermissionsResult(requestCode,
+                permissions,
+                grantResults,
+                this);
+    }
+    
 }
